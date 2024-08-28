@@ -8,6 +8,7 @@ import { DetailUserController } from './controllers/user/DetailUserController';
 // Middleware de autenticaçao - Verifica se o usuário está autenticado
 import { isAuthenticated } from './middlewares/isAuthenticated';
 import { CreateCategoryController } from './controllers/category/CreateCategoryController';
+import { ListCategoryController } from './controllers/category/ListCategoryController';
 
 const router = Router();
 
@@ -20,5 +21,7 @@ router.get('/me', isAuthenticated, new DetailUserController().handle);
 
 // ROTAS CATEGORY
 router.post('/category', isAuthenticated, new CreateCategoryController().handle);
+
+router.get('/category', isAuthenticated, new ListCategoryController().handle);
 
 export { router }
