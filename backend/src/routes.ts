@@ -7,6 +7,7 @@ import { DetailUserController } from './controllers/user/DetailUserController';
 
 // Middleware de autenticaçao - Verifica se o usuário está autenticado
 import { isAuthenticated } from './middlewares/isAuthenticated';
+import { CreateCategoryController } from './controllers/category/CreateCategoryController';
 
 const router = Router();
 
@@ -16,5 +17,8 @@ router.post('/users', new CreateUserController().handle);
 router.post('/session', new AuthUserController().handle);
 
 router.get('/me', isAuthenticated, new DetailUserController().handle);
+
+// ROTAS CATEGORY
+router.post('/category', isAuthenticated, new CreateCategoryController().handle);
 
 export { router }
